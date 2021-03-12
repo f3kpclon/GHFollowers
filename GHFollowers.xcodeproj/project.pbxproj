@@ -72,19 +72,10 @@
 		311C348325F8641900C3234E /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				314A379925FAFF230099218E /* Support */,
+				314A379825FAFED80099218E /* Extensions */,
+				314A379725FAFE970099218E /* CustomViews */,
 				314A379625FABD7F0099218E /* Controllers */,
-				311C348425F8641900C3234E /* AppDelegate.swift */,
-				311C348625F8641900C3234E /* SceneDelegate.swift */,
-				311C348D25F8641A00C3234E /* Assets.xcassets */,
-				311C348F25F8641A00C3234E /* LaunchScreen.storyboard */,
-				311C349225F8641A00C3234E /* Info.plist */,
-				311C34A325F86C3600C3234E /* FavoritesListViewController.swift */,
-				311C34A625F8738000C3234E /* GFButton.swift */,
-				314A378125F981F00099218E /* GFTextField.swift */,
-				314A378725F9B7790099218E /* GFTitleField.swift */,
-				314A378A25FA795B0099218E /* GFBodyLabel.swift */,
-				314A379025FA80820099218E /* GFAlertViewContainer.swift */,
-				314A379325FAB5B50099218E /* UIVIewController+Ext.swift */,
 			);
 			path = GHFollowers;
 			sourceTree = "<group>";
@@ -92,11 +83,44 @@
 		314A379625FABD7F0099218E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				311C34A325F86C3600C3234E /* FavoritesListViewController.swift */,
 				311C34A025F86BF500C3234E /* SerachViewController.swift */,
 				314A378425F9AE0C0099218E /* FavsListViewController.swift */,
 				314A378D25FA7A1E0099218E /* GFAlertViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		314A379725FAFE970099218E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				311C34A625F8738000C3234E /* GFButton.swift */,
+				314A378125F981F00099218E /* GFTextField.swift */,
+				314A378725F9B7790099218E /* GFTitleField.swift */,
+				314A378A25FA795B0099218E /* GFBodyLabel.swift */,
+				314A379025FA80820099218E /* GFAlertViewContainer.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		314A379825FAFED80099218E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				314A379325FAB5B50099218E /* UIVIewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		314A379925FAFF230099218E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				311C348425F8641900C3234E /* AppDelegate.swift */,
+				311C348625F8641900C3234E /* SceneDelegate.swift */,
+				311C348D25F8641A00C3234E /* Assets.xcassets */,
+				311C348F25F8641A00C3234E /* LaunchScreen.storyboard */,
+				311C349225F8641A00C3234E /* Info.plist */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
