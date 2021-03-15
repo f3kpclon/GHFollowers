@@ -27,7 +27,7 @@ class SerachViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
 }
@@ -40,7 +40,7 @@ private extension SerachViewController {
             presentGFAlertOnMainThread(title: "Empty UserName", message: "Please enter a username 👀", btnTitle: "OK")
             return
         }
-        let followersListVC = FavsListViewController()
+        let followersListVC = FavoritesListViewController()
         followersListVC.userName = userNameTxtField.text
         followersListVC.title    = userNameTxtField.text
         navigationController?.pushViewController(followersListVC, animated: true)
