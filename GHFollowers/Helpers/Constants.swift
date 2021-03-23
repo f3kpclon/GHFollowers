@@ -16,5 +16,18 @@ struct Constants {
     
     struct Image {
         static let imgPlaceholder = UIImage(named: "avatar-placeholder")!
+        static let logoEmptyState = UIImage(named: "empty-state-logo")!
+        
+    }
+    
+    enum SFSymbols {
+        static let location = "mappin.and.ellipse"
+        static let repos = "folder.badge.person.crop"
+        static let gists = "text.alignleft"
+        static let followers = "suit.heart"
+        static let following = "person.circle"
+    }
+    enum ItemCaseType {
+        case repos, gists, followers, following
     }
 }

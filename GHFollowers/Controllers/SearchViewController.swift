@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SerachViewController: UIViewController {
+class SearchViewController: UIViewController {
 
 //    Best way is to initialize accord to the orden of call
     let logoImageView = UIImageView()
@@ -32,7 +32,7 @@ class SerachViewController: UIViewController {
 
 }
 
-private extension SerachViewController {
+private extension SearchViewController {
     
     @objc func pushFollowerListVC() {
         
@@ -40,8 +40,8 @@ private extension SerachViewController {
             presentGFAlertOnMainThread(title: "Empty UserName", message: "Please enter a username 👀", btnTitle: "OK")
             return
         }
-        let followersListVC = FavoritesListViewController()
-        followersListVC.userName = userNameTxtField.text
+        let followersListVC = FollowerListViewController()
+        followersListVC.username = userNameTxtField.text
         followersListVC.title    = userNameTxtField.text
         navigationController?.pushViewController(followersListVC, animated: true)
         
@@ -95,7 +95,7 @@ private extension SerachViewController {
     }
 }
 
-extension SerachViewController: UITextFieldDelegate {
+extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
         return true

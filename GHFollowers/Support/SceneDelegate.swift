@@ -59,14 +59,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //MARK: Func for navControllers
 private extension SceneDelegate {
     func createSearchNavController() -> UINavigationController {
-        let searchVC = SerachViewController()
+        let searchVC = SearchViewController()
         searchVC.title = "Search"
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         return UINavigationController(rootViewController: searchVC)
         
     }
     func createFavoriteNavController() -> UINavigationController {
-        let favListVC = FavoritesListViewController()
+        let favListVC = FollowerListViewController()
         favListVC.title = "Favorites"
         favListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         return UINavigationController(rootViewController: favListVC)
