@@ -15,7 +15,7 @@ class UserInfoViewController: UIViewController {
     let dateLabel = GFBodyLabel(textAlignment: .center)
 
     var username : String!
-    weak var delegate : FollowerListVCDelegate!
+    weak var delegate : UserInfoVCDelegate!
     var itemViews : [UIView] = []
     
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ extension UserInfoViewController {
 
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: padding),
-            headerView.heightAnchor.constraint(equalToConstant: 180),
+            headerView.heightAnchor.constraint(equalToConstant: 210),
             
             cardViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             cardViewOne.heightAnchor.constraint(equalToConstant: cardHeight),
@@ -97,11 +97,9 @@ extension UserInfoViewController {
     
     func configureUIElements(with user: User)  {
 
-        let repoItemVC = GFRepoItemVC(user: user)
-        repoItemVC.delegate = self
+        let repoItemVC = GFRepoItemVC(user: user, delegate: self)
         
-        let followerItemVC = GFFollowerItemVC(user: user)
-        followerItemVC.delegate = self
+        let followerItemVC = GFFollowerItemVC(user: user, delegate: self)
         
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
         self.add(childVC: repoItemVC, to: self.cardViewOne)
@@ -110,25 +108,16 @@ extension UserInfoViewController {
     }
 }
 
-
-//MARK: PROTOCOL
-protocol UserInfoVCDelegate: AnyObject {
-    func didTapGithubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
-
-}
-
-extension UserInfoViewController: UserInfoVCDelegate {
+extension UserInfoViewController: GFRepoItemVCDelegate{
     
     func didTapGithubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl ) else
         { presentGFAlertOnMainThread(title: "Invalid URL", message: "The url is invalid", btnTitle: "OK"); return }
         presentSafariVC(with: url)
-    
-        
-
     }
-    
+}
+
+extension UserInfoViewController: GFFollowerItemVCDelegate {
     func didTapGetFollowers(for user : User) {
         guard user.followers != 0 else {
             presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers", btnTitle: "OK")
@@ -137,10 +126,9 @@ extension UserInfoViewController: UserInfoVCDelegate {
         delegate.didRequestFollower(for: user.login)
         dismissVC()
     }
-    
-    
-    
 }
 
-
+protocol UserInfoVCDelegate: AnyObject {
+    func didRequestFollower(for username: String)
+}
 

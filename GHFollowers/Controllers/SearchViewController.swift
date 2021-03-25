@@ -56,7 +56,7 @@ private extension SearchViewController {
     func configLogoImageView()  {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")!
+        logoImageView.image = Constants.Image.emptyState
         
         NSLayoutConstraint.activate([
 //            most of the time we will need four constraint

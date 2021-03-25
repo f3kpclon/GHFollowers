@@ -30,7 +30,7 @@ class GFUserInfoHeaderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
+        addSubViewsUI()
         layaoutUUI()
         configUIElements()
     }
@@ -41,7 +41,7 @@ extension GFUserInfoHeaderVC {
     
     
     func configUIElements()  {
-        avatarImgView.downloadImage(from: user.avatarUrl)
+        downloadImage()
         usernameLabel.text = user.login
         nameLAbel.text = user.name ?? "N/A"
         locationLabel.text = user.location ?? "N/A"
@@ -49,16 +49,25 @@ extension GFUserInfoHeaderVC {
         bioLabel.numberOfLines = 3
         
 //        location image
-        locationImgView.image = UIImage(systemName: Constants.SFSymbols.location)
+        locationImgView.image = Constants.SFSymbols.location
         locationImgView.tintColor = .secondaryLabel
     }
-    func addSubViews()  {
-        view.addSubview(avatarImgView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLAbel)
-        view.addSubview(locationLabel)
-        view.addSubview(locationImgView)
-        view.addSubview(bioLabel)
+    func downloadImage()  {
+        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+            guard let  self = self else {return}
+            
+            DispatchQueue.main.async {
+                self.avatarImgView.image = image
+            }
+        }
+    }
+    func addSubViewsUI()  {
+        view.addSubViews(avatarImgView,
+                         usernameLabel,
+                         nameLAbel,
+                         locationLabel,
+                         locationImgView,
+                         bioLabel)
     }
     
     func layaoutUUI() {
@@ -94,7 +103,7 @@ extension GFUserInfoHeaderVC {
             bioLabel.topAnchor.constraint(equalTo: avatarImgView.bottomAnchor, constant: textImagePadding),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImgView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60)
+            bioLabel.heightAnchor.constraint(equalToConstant: 90)
         ])
         
         

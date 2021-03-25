@@ -14,9 +14,7 @@ class GFItemInfoViewController: UIViewController {
     let itemInfoViewTwo = GFItemInfoView()
     let actionButton = GFButton()
     var user : User!
-//    must be weak due to avoid retain cycles
-    weak var delegate: UserInfoVCDelegate!
-    
+
     init(user: User) {
        super.init(nibName: nil, bundle: nil)
        self.user = user
@@ -61,8 +59,7 @@ extension GFItemInfoViewController {
      func layaoutUI()  {
         
         let padding: CGFloat = 20
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubViews(stackView,actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -79,3 +76,6 @@ extension GFItemInfoViewController {
         ])
     }
 }
+
+
+

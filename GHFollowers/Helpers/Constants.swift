@@ -15,17 +15,18 @@ struct Constants {
     }
     
     struct Image {
-        static let imgPlaceholder = UIImage(named: "avatar-placeholder")!
-        static let logoEmptyState = UIImage(named: "empty-state-logo")!
+        static let imgPlaceholder = UIImage(named: "avatar-placeholder")
+        static let logoEmptyState = UIImage(named: "empty-state-logo")
+        static let emptyState = UIImage(named: "gh-logo")
         
     }
     
     enum SFSymbols {
-        static let location = "mappin.and.ellipse"
-        static let repos = "folder.badge.person.crop"
-        static let gists = "text.alignleft"
-        static let followers = "suit.heart"
-        static let following = "person.circle"
+        static let location = UIImage(systemName: "mappin.and.ellipse")
+        static let repos = UIImage(systemName:"folder.badge.person.crop")
+        static let gists = UIImage(systemName:"text.alignleft")
+        static let followers = UIImage(systemName:"suit.heart")
+        static let following = UIImage(systemName:"person.circle")
     }
     enum ItemCaseType {
         case repos, gists, followers, following

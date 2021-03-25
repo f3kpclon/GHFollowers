@@ -24,14 +24,9 @@ class FollowerCell: UICollectionViewCell {
     }
     
     private func configure() {
-        addSubviews()
+        addSubViews(avatarImage,usernameLabel)
         setConstraints()
         
-    }
-    
-    private func addSubviews(){
-        addSubview(avatarImage)
-        addSubview(usernameLabel)
     }
     
     private func setConstraints(){
@@ -52,6 +47,16 @@ class FollowerCell: UICollectionViewCell {
     
     func set(follower : Follower)  {
         usernameLabel.text = follower.login
-        avatarImage.downloadImage(from: follower.avatarUrl!)
+        downloadImage(for: follower.avatarUrl)
     }
+    func downloadImage(for avatarString: String)  {
+        NetworkManager.shared.downloadImage(from: avatarString) { [weak self] image in
+            guard let  self = self else {return}
+            
+            DispatchQueue.main.async {
+                self.avatarImage.image = image
+            }
+        }
+    }
+
 }

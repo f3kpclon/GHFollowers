@@ -20,10 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 
         window?.windowScene = windowScene
-        window?.rootViewController = createTabbar()
+        window?.rootViewController = GFTabController()
         window?.makeKeyAndVisible()
         
-        configNavigationBar()
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar()  {
+        UINavigationBar.appearance().tintColor = .systemRed
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,35 +57,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
-}
-//MARK: Func for navControllers
-private extension SceneDelegate {
-    func createSearchNavController() -> UINavigationController {
-        let searchVC = SearchViewController()
-        searchVC.title = "Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        return UINavigationController(rootViewController: searchVC)
-        
-    }
-    func createFavoriteNavController() -> UINavigationController {
-        let favListVC = FollowerListViewController()
-        favListVC.title = "Favorites"
-        favListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        return UINavigationController(rootViewController: favListVC)
-    }
-    
-    func createTabbar() -> UITabBarController {
-        let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemGreen
-        tabbar.viewControllers = [createSearchNavController(), createFavoriteNavController()]
-        return tabbar
-    }
-    
-    func configNavigationBar()  {
-        UINavigationBar.appearance().tintColor = .systemGreen
-    }
-    
-    
 }
